@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Rubik+Doodle+Shadow&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <style>
+    body {
+      background-color:#222;
+      margin: 0;
+      width:100%;
+      height: 100vh;
+    }
+
+    .container {
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(255, 255, 255, 0.9);
+    }
+   input::placeholder,select::placeholder{
+       color: white;
+       font-family: 'Montserrat', sans-serif;
+   }
+    input, select {
+    color:white;
+      width:50vw;
+      padding: 10px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      border-radius: 10px;
+      background: transparent;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .container div button{
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      margin: 8px;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      
+    }
+
+    .container div button:hover {
+      background-color: #45a049;
+    }
+
+    .toggle-btn {
+      background-color: #3498db;
+      color: white;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .toggle-btn:hover {
+      background-color: #2980b9;
+    }
+    img{
+        width:45px;
+        height:45px;
+        border-radius:50%;
+    }
+    nav form a{
+        margin:5px;
+    }
+    #navbar{
+        position: absolute;
+        top:0;
+        width:100%;
+        z-index:2;
+    }
+    .container div,.container div form{
+        display:flex;
+        align-items:center;
+        justify-content: center;
+        flex-direction:column;
+    }
+.container{
+    background:#333;
+    box-shadow: 0 0 10px rgba(255,255,255, 0.5);
+}
+
+h2, #kusanagi {
+font-family: 'Rubik Doodle Shadow', system-ui;
+color: white;
+}
+
+label{
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+}
+  </style>
+   
+  
+  <title>Login and Signup</title>
+</head>
+<body>
+    
+    
+    <nav class="navbar navbar-expand-lg bg-body-tertiary-dark" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" id="kusanagi" href="#">K U S A N A G I</a>
+      
+    </button>
+<button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"
+aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="kusanagi">K U S A N A G I</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div>
+     SOME TEXT OR SOMETHING HERE.
+    </div>
+  </div>
+</div>
+  </div>
+</nav>
+
+<nav class="navbar bg-body-tertiary-dark" data-bs-theme="dark">
+  <form class="container-fluid justify-content-start">
+    <a class="btn btn-sm btn-outline-secondary" href="index.html"><img src="home.png" alt=""></a>
+    <a class="btn btn-outline-success me-2" href="account.html"><img src="account.png" alt=""></a>
+    <a class="btn btn-sm btn-outline-secondary" href="dashboard.html"><img src="dashboard.jpeg" alt=""></a>
+    <a class="btn btn-sm btn-outline-secondary" href="interact.html"><img src="interact.png" alt=""></a>
+    <a class="btn btn-sm btn-outline-secondary" href="games.html"><img src="games.png" alt=""></a>
+  </form>
+</nav>
+    
+    
+  <div class="container" id="container">
+    <button class="toggle-btn" id="toggle" onclick="toggleForm()">login instead?</button>
+
+    <div id="loginForm" style="display: none;">
+      <h2>Login</h2>
+      <form action="login.php" method="post">
+        <input type="text" id="loginUsername" name="loginUsername" placeholder="NAME(Anime/Manga/Manhwa characters or OCs):" required>
+<label for="loginPassword">Password:</label>
+        <input type="password" id="loginPassword" name="loginPassword" required>
+
+        <label for="loginAdmin">Admin:</label>
+        <select id="loginAdmin" name="loginAdmin">
+          <option value="no">No</option>
+          <option value="yes">Yes</option>
+        </select>
+
+        <button type="submit">Login</button>
+      </form>
+    </div>
+
+    <div id="signupForm">
+      <h2>Signup</h2>
+      <form action="signup.php" method="post">          
+        <input placeholder="NAME(Anime/Manga/Manhwa characters or OCs):" type="text" id="signupUsername" name="username" required>
+
+           <label for="signupPassword">Password:</label>
+        <input placeholder="Create Password" type="text" id="signupPassword" name="password" required>
+
+        <label for="signupLocation">Location:</label>
+        <input placeholder="City, country" type="text" onclick='iplocate()' id="signupLocation" name="location" required>
+
+        <label for="signupDOB">Date of Birth:</label>
+        <input type="date" id="signupDOB" name="dob" required>
+        
+        <label for="signupPhoto">Photo:</label>
+        <input type="file" id="signupPhoto" name="photo" accept="image/*" required>
+
+        <label for="signupAdmin">Admin:</label>
+        <select id="signupAdmin" name="admin">
+          <option value="no">No</option>
+          <option value="yes">Yes</option>
+        </select>
+
+        <button type="submit" name="submit">Signup</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function toggleForm() {
+      var loginForm = document.getElementById("loginForm");
+      var signupForm = document.getElementById("signupForm");
+
+      if (signupForm.style.display === "none") {
+        loginForm.style.display = "none";
+        signupForm.style.display = "block"; document.getElementById("toggle").innerHTML="Login instead?";
+      } else {
+      document.getElementById("toggle").innerHTML="Sign up instead?"
+        loginForm.style.display = "block";
+        signupForm.style.display = "none";
+      }
+    }
+    var signupLocation=document.getElementById("signupLocation");    
+    function iplocate() {
+    
+    if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else{
+      document.write("good luck");
+  }
+}
+function showPosition(position) {
+console.log("hello");
+      var lat=position.coords.latitude;
+      var long=position.coords.longitude;
+      var userIp="49.126.80.129";
+fetch("https://api.weatherapi.com/v1/current.json?key=7afef86636e24ed3bd095538242401&q=${lat},${long}&aqi=no")
+.then(response => response.json())
+.then(data => {
+signupLocation.value=data.location.name+", "+data.location.country;
+})
+.catch(error => {
+
+document.write("Error:" + error);
+});
+}
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
